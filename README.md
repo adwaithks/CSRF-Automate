@@ -2,7 +2,8 @@
 Automate login csrf and know whether it is vulnerable by providing the needed POST parameters.
 
 <h2>Usage</h2>
-<p>python csrf.py <number of POST parameters> </p>
+<p>python csrf.py "number of POST parameters" </p>
+<p>without quotes ("")</p>
 
 
 <h2>Install</h2>
