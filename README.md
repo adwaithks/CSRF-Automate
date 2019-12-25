@@ -10,3 +10,5 @@ Automate login csrf and know whether it is vulnerable by providing the needed PO
   <p>pip install -r requirements.txt</p>
   <p>If any environment error occurs, use --user with the above command</p>
   
+  
+ 
