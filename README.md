@@ -1,4 +1,4 @@
-# Login-CSRF-Automate
+# CSRF-POC-Generator
 <h2>CSRF POC script generator for your manual testing.</h2>
 
 <h2>Usage</h2>
