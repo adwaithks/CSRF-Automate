@@ -1,9 +1,9 @@
 # Login-CSRF-Automate
-<h2>POC script generator for your manual testing.</h2> :) 
+<h2>CSRF POC script generator for your manual testing.</h2>
 
 <h2>Usage</h2>
-<p>python csrf.py "number of POST parameters" </p>
-<p>without quotes ("")</p>
+<p>python csrf.py <number of POST parameters> </p>
+<p>Replace <> with the actual number of parameters in the POST request</p>
 
 
 <h2>Install</h2>
